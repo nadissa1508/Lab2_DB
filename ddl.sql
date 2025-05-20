@@ -37,7 +37,6 @@ CREATE TABLE plantas (
 CREATE TABLE huertos (
   id SERIAL PRIMARY KEY,
   area_total FLOAT NOT NULL,
-  area_disponible FLOAT NOT NULL,
   ubicacion VARCHAR(255) NOT NULL,
   luminosidad FLOAT NOT NULL,
   tipo_sustrato VARCHAR(50) NOT NULL,
@@ -61,7 +60,7 @@ CREATE TABLE auditoria_huerto (
 
 CREATE TABLE tratamientos_huerto (
   id SERIAL PRIMARY KEY,
-  id_auditoria_huerto INT REFERENCES auditoria_huerto(id),
+  id_auditoria_huerto INT NOT NULL REFERENCES auditoria_huerto(id),
   id_tratamiento INT NOT NULL REFERENCES tratamientos(id),
   cantidad FLOAT NOT NULL,
   hora TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
